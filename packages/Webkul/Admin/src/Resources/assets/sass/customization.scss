@@ -1,0 +1,70 @@
+.notification-create {
+    display: inline-flex;
+    vertical-align: middle;
+    margin-right: 10px;
+    position: relative;
+
+    .button {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        border-radius: 43px;
+        border: 2px solid $primary-color;
+        background: $primary-color;
+        cursor: pointer;
+
+        &.active {
+            box-shadow: inset 0px 0px 0px 2px white-color;
+        }
+
+        .icon {
+            margin-top: 6px;
+            margin-right: 9px;
+        }
+    }
+
+    .dropdown-list {
+        top: 50px;
+        right: 0;
+        bottom: unset;
+        width: 400px;
+        padding: 12px;
+
+        .dropdown-container {
+            ul {
+                li {
+                    color: #263238;
+                    font-weight: 500;
+                    cursor: default;
+                    display: flex;
+                    border-bottom:1px solid rgb(163, 155, 155);
+
+                    a {
+                        background: none !important;
+                        color: #263238 !important;
+                    }
+
+                    &:hover {
+                        background: none !important;
+                    }
+
+                    a:hover {
+                        color: #0E90D9 !important;
+                    }
+
+                    .more-items {
+                        padding-top: 10px;
+                        display: flex;
+                        gap: 120px;
+                    }
+
+                    
+                }
+
+                .no-border {
+                    border: none !important;
+                }
+            }
+        }
+    }
+}
