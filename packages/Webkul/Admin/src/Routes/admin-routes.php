@@ -104,7 +104,7 @@ Route::group(['middleware' => ['web', 'admin_locale']], function () {
 
                 Route::get('create/{id?}', 'QuoteController@create')->name('admin.quotes.create');
 
-                Route::post('create', 'QuoteController@store')->name('admin.quotes.store');
+                Route::post('store', 'QuoteController@store')->name('admin.quotes.store');
 
                 Route::get('edit/{id?}', 'QuoteController@edit')->name('admin.quotes.edit');
 

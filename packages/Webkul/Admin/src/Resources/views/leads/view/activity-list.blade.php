@@ -171,27 +171,23 @@
                         <table>
                             <thead>
                                 <tr>
-                                    <th class="quote-subject">{{ __('admin::app.leads.subject') }}</th>
-
-                                    <th class="expired-at">{{ __('admin::app.leads.expired-at') }}</th>
-
-                                    <th class="sub-total">
-                                        {{ __('admin::app.leads.sub-total') }}
-                                        <span class="currency-code">({{ core()->currencySymbol(config('app.currency')) }})</span>
-                                    </th>
+                                    <th class="quote-subject">{{ __('admin::app.leads.name') }}</th>
 
                                     <th class="discount">
-                                        {{ __('admin::app.leads.discount') }}
+                                        {{ __('admin::app.quotes.sales-person') }}
+                                    </th>
+
+                                    <th class="adjustment">
+                                        {{ __('admin::app.leads.person') }}
+                                    </th>
+
+                                    <th class="sub-total">
+                                        {{ __('admin::app.leads.price') }}
                                         <span class="currency-code">({{ core()->currencySymbol(config('app.currency')) }})</span>
                                     </th>
 
                                     <th class="tax">
                                         {{ __('admin::app.leads.tax') }}
-                                        <span class="currency-code">({{ core()->currencySymbol(config('app.currency')) }})</span>
-                                    </th>
-
-                                    <th class="adjustment">
-                                        {{ __('admin::app.leads.adjustment') }}
                                         <span class="currency-code">({{ core()->currencySymbol(config('app.currency')) }})</span>
                                     </th>
 
@@ -206,19 +202,17 @@
                             
                             <tbody>
                                 <tr v-for="quote in quotes">
-                                    <td class="quote-subject">@{{ quote.subject }}</td>
-
-                                    <td class="expired-at">@{{ quote.expired_at }}</td>
+                                    <td class="quote-subject">@{{ quote.name }}</td>
                                     
-                                    <td class="sub-total">@{{ quote.sub_total }}</td>
+                                    <td class="discount">@{{ quote.user.name }}</td>
 
-                                    <td class="discount">@{{ quote.discount_amount }}</td>
+                                    <td class="adjustment">@{{ quote.person.name }}</td>
 
-                                    <td class="tax">@{{ quote.tax_amount }}</td>
+                                    <td class="sub-total">@{{ quote.price }}</td>
 
-                                    <td class="adjustment">@{{ quote.adjustment_amount }}</td>
+                                    <td class="tax">@{{ quote.tax }}</td>
 
-                                    <td class="grand-total">@{{ quote.grand_total }}</td>
+                                    <td class="grand-total">@{{ quote.price + quote.tax }}</td>
 
                                     <td class="actions">
                                         <span class="icon ellipsis-icon dropdown-toggle"></span>

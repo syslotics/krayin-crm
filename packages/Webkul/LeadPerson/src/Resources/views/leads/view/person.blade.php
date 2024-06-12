@@ -48,66 +48,6 @@
                         @endif
                     </div>
                 </div>
-
-                <div class="attribute-value-row">
-                    <div class="label">Service Type</div>
-
-                    <div class="value">
-                        <span v-text="personsView.service_type"></span>
-                    </div>
-                </div>
-
-                <div class="attribute-value-row">
-                    <div class="label">Vehicle Type</div>
-
-                    <div class="value">
-                        <span v-text="personsView.vehicle_type"></span>
-                    </div>
-                </div>
-
-                <div class="attribute-value-row">
-                    <div class="label">Pickup Date</div>
-
-                    <div class="value">
-                        <span v-text="personsView.pickup_date"></span>
-                    </div>
-                </div>
-                <div class="attribute-value-row">
-                    <div class="label">Pickup Time</div>
-
-                    <div class="value">
-                        <span v-text="personsView.pickup_time"></span>
-                    </div>
-                </div>
-                <div class="attribute-value-row">
-                    <div class="label">Pickup Location</div>
-
-                    <div class="value">
-                        <span v-text="personsView.pickup_location"></span>
-                    </div>
-                </div>
-                <div class="attribute-value-row">
-                    <div class="label">Drop Location</div>
-
-                    <div class="value">
-                        <span v-text="personsView.drop_location"></span>
-                    </div>
-                </div>
-                <div class="attribute-value-row">
-                    <div class="label">Pickup Airport</div>
-
-                    <div class="value">
-                        <span v-text="personsView.pickup_airport"></span>
-                    </div>
-                </div>
-                <div class="attribute-value-row">
-                    <div class="label">Dropoff Airport</div>
-
-                    <div class="value">
-                        <span v-text="personsView.dropoff_airport"></span>
-                    </div>
-                </div>
-                
             </div>
         </div>
     </script>
