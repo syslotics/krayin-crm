@@ -38,48 +38,6 @@
                         </span>
                     </div>
                 </div>
-
-                <div class="attribute-value-row">
-                    <div class="label">{{ __('drivers::app.lead.view.index.cost') }}</div> 
-                    
-                    <div class="value" v-text="driver.cost"></div>
-                </div>
-
-                <div class="attribute-value-row">
-                    <div class="label">{{ __('drivers::app.lead.view.index.tax') }}</div> 
-                    
-                    <div class="value" v-text="driver.tax"></div>
-                </div>
-
-                <div class="attribute-value-row">
-                    <div class="label">{{ __('drivers::app.lead.view.index.gratuity') }}</div> 
-                    
-                    <div class="value" v-text="driver.gratuity"></div>
-                </div>
-
-                <div class="attribute-value-row">
-                    <div class="label">{{ __('drivers::app.lead.view.index.extra-addons') }}</div> 
-                    
-                    <div class="value" v-text="driver.extra_addons"></div>
-                </div>
-
-                <div class="attribute-value-row">
-                    <div class="label">{{ __('drivers::app.lead.view.index.total-cost') }}</div> 
-                    
-                    <div class="value" v-text="driver.total_cost"></div>
-                </div>
-
-                <div class="attribute-value-row">
-                    <div class="label">{{ __('drivers::app.lead.view.index.source-of-lead') }}</div> 
-                    
-                    <div class="value" v-text="driver.source_of_lead"></div>
-                </div>
-            </div>
-
-            <div class="empty-record" v-else>
-                <img src="{{ asset('vendor/webkul/admin/assets/images/empty-table-icon.svg') }}">
-
-                <span>{{ __('drivers::app.lead.view.index.no-records-found') }}</span>
             </div>
         </div>
     </div>

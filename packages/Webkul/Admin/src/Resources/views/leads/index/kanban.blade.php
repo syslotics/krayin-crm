@@ -116,7 +116,7 @@
                 </div>
 
                 <div class="lead-cost">
-                    <i class="icon dollar-circle-icon"></i>@{{ lead.lead_value }}
+                    <i class="icon dollar-circle-icon"></i>@{{ lead.total_cost }}
                 </div>
             </div>
         </kanban-board>

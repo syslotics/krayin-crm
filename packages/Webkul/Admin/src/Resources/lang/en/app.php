@@ -127,6 +127,7 @@
 
         'leads' => [
             'title'                    => 'Leads',
+            'tip'                      => 'Tip',
             'lead'                     => 'Lead',
             'create-title'             => 'Create Lead',
             'edit-title'               => 'Edit Lead',

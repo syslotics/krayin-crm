@@ -191,6 +191,11 @@
                                         <span class="currency-code">({{ core()->currencySymbol(config('app.currency')) }})</span>
                                     </th>
 
+                                    <th class="tax">
+                                        {{ __('admin::app.leads.tip') }}
+                                        <span class="currency-code">({{ core()->currencySymbol(config('app.currency')) }})</span>
+                                    </th>
+
                                     <th class="grand-total">
                                         {{ __('admin::app.leads.grand-total') }}
                                         <span class="currency-code">({{ core()->currencySymbol(config('app.currency')) }})</span>
@@ -212,7 +217,9 @@
 
                                     <td class="tax">@{{ quote.tax }}</td>
 
-                                    <td class="grand-total">@{{ quote.price + quote.tax }}</td>
+                                    <td class="tax">@{{ quote.tip }}</td>
+
+                                    <td class="grand-total">@{{ (quote.price + quote.tax) + quote.tip }}</td>
 
                                     <td class="actions">
                                         <span class="icon ellipsis-icon dropdown-toggle"></span>
