@@ -10,9 +10,15 @@
         <div class="panel-body custom-attribute-view" style="position: relative">
             <div v-if="driver.driver">
                 <div class="attribute-value-row">
-                    <div class="label">{{ __('drivers::app.lead.view.index.name') }}</div> 
+                    <div class="label">{{ __('drivers::app.datagrid.first_name') }}</div> 
 
-                    <div class="value" v-text="driver.driver.name"></div>
+                    <div class="value" v-text="driver.driver.first_name"></div>
+                </div>
+
+                <div class="attribute-value-row">
+                    <div class="label">{{ __('drivers::app.datagrid.last_name') }}</div> 
+
+                    <div class="value" v-text="driver.driver.last_name"></div>
                 </div>
 
                 <div class="attribute-value-row">

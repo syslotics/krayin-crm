@@ -1,10 +1,12 @@
 <?php
     return [
         'datagrid' => [
-            'title' => 'Drivers',
-            'name'  => 'Name',
-            'email' => 'Email',
-            'phone' => 'Phone',
+            'email'      => 'Email',
+            'first_name' => 'First Name',
+            'last_name'  => 'Last Name',
+            'name'       => 'Name',
+            'phone'      => 'Phone',
+            'title'      => 'Drivers',
         ],
 
         'lead' => [

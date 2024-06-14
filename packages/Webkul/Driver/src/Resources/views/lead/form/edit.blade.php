@@ -1,24 +1,28 @@
 <tab name="{{ __('drivers::app.lead.form.create.heading') }}">
-    <driver-information :data='@json(old('driver') ?: $lead->driver->driver)'></driver-information>
+    @if ($lead->driver)
+        <driver-information :data='@json($lead->driver->driver)'></driver-information>
+    @else
+        <driver-information :data='@json(old('driver'))'></driver-information>
+    @endif
 </tab>
 
 @push('scripts')
     <script type="text/x-template" id="driver-information-template">
         <div class="driver-controls">
-            <!-- Name -->
-            <div class="form-group" :class="[errors.has('{!! $formScope ?? '' !!}driver[name]') ? 'has-error' : '']">
-                <label for="driver[name]" class="required">{{ __('drivers::app.lead.form.create.name') }}</label>
+            <!-- First Name -->
+            <div class="form-group" :class="[errors.has('{!! $formScope ?? '' !!}driver[first_name]') ? 'has-error' : '']">
+                <label for="driver[first_name]" class="required">{{ __('drivers::app.datagrid.first_name') }}</label>
     
                 <input
                     type="text"
                     name="drivers[name]"
                     class="control"
-                    id="driver[name]"
-                    v-model="driver.name"
+                    id="driver[first_name]"
+                    v-model="driver.first_name"
                     autocomplete="off"
                     placeholder="{{ __('admin::app.common.start-typing') }}"
                     v-validate="'required'"
-                    data-vv-as="&quot;{{ __('drivers::app.lead.form.create.name') }}&quot;"
+                    data-vv-as="&quot;{{ __('drivers::app.datagrid.first_name') }}&quot;"
                     v-on:keyup="search"
                 />
 
@@ -27,14 +31,14 @@
                     name="drivers[driver_id]"
                     v-model="driver.driver_id"
                     v-validate="'required'"
-                    data-vv-as="&quot;{{ __('drivers::app.lead.form.create.name') }}&quot;"
+                    data-vv-as="&quot;{{ __('drivers::app.datagrid.first_name') }}&quot;"
                     v-if="drivers.id"
                 />
 
                 <div class="lookup-results" v-if="search_drivers.length">
                     <ul>
                         <li v-for='(driver, index) in search_drivers' @click="addDriver(driver)">
-                            <span>@{{ driver.name }}</span>
+                            <span>@{{ driver.first_name }}</span>
                         </li>
 
                         <li v-if="! search_drivers.length && ! is_searching">
@@ -49,8 +53,29 @@
                     </ul>
                 </div>
 
-                <span class="control-error" v-if="errors.has('{!! $formScope ?? '' !!}driver[name]')">
-                    @{{ errors.first('{!! $formScope ?? '' !!}driver[name]') }}
+                <span class="control-error" v-if="errors.has('{!! $formScope ?? '' !!}driver[first_name]')">
+                    @{{ errors.first('{!! $formScope ?? '' !!}driver[first_name]') }}
+                </span>
+            </div>
+
+            <!-- Last Name -->
+            <div class="form-group" :class="[errors.has('{!! $formScope ?? '' !!}driver[last_name]') ? 'has-error' : '']">
+                <label for="driver[last_name]" class="required">{{ __('drivers::app.datagrid.last_name') }}</label>
+    
+                <input
+                    type="text"
+                    name="drivers[last_name]"
+                    class="control"
+                    id="driver[last_name]"
+                    v-model="driver.last_name"
+                    autocomplete="off"
+                    placeholder="{{ __('drivers::app.datagrid.last_name') }}"
+                    v-validate="'required'"
+                    data-vv-as="&quot;{{ __('drivers::app.datagrid.last_name') }}&quot;"
+                />
+
+                <span class="control-error" v-if="errors.has('{!! $formScope ?? '' !!}driver[last_name]')">
+                    @{{ errors.first('{!! $formScope ?? '' !!}driver[last_name]') }}
                 </span>
             </div>
 
@@ -96,7 +121,7 @@
                     state: this.data ? 'old': '',
 
                     driver: this.data ? this.data : {
-                        'name': ''
+                        'first_name': ''
                     },
 
                     drivers: [],
@@ -128,7 +153,7 @@
                     this.state = '';
 
                     this.driver = {
-                        'name': this.drivers.name
+                        'name': this.drivers.first_name
                     };
 
                     this.is_searching = true;
@@ -137,7 +162,7 @@
 
                     this.$http.get("{{ route('drivers.information.search') }}", {
                         params: {
-                            query: this.drivers.name
+                            query: this.drivers.first_name
                         }})
                         .then (function(response) {
 

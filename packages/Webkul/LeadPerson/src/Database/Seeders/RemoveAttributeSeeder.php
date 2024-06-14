@@ -64,5 +64,31 @@ class RemoveAttributeSeeder extends Seeder
                 'code'        => 'expected_close_date',
             ])->delete();
         }
+
+        //Expected Close Date
+        $removeNameAttributeInPerson = DB::table('attributes')->where([
+            'entity_type' => 'persons',
+            'code'        => 'name',
+        ])->first();
+
+        if ($removeNameAttributeInPerson) {
+            DB::table('attributes')->where([
+                'entity_type' => 'persons',
+                'code'        => 'name',
+            ])->delete();
+        }
+
+        //Expected Close Date
+        $removeNameAttributeInDriver = DB::table('attributes')->where([
+            'entity_type' => 'drivers',
+            'code'        => 'name',
+        ])->first();
+
+        if ($removeNameAttributeInDriver) {
+            DB::table('attributes')->where([
+                'entity_type' => 'drivers',
+                'code'        => 'name',
+            ])->delete();
+        }
     }
 }

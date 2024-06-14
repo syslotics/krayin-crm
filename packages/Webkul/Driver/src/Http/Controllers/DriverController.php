@@ -43,7 +43,7 @@ class DriverController extends Controller
     public function search()
     {
         $results = $this->driverRepository->findWhere([
-            ['name', 'like', '%' . urldecode(request()->input('query')) . '%']
+            ['first_name', 'like', '%' . urldecode(request()->input('query')) . '%']
         ]);
 
         return response()->json($results);
@@ -68,9 +68,10 @@ class DriverController extends Controller
     public function store()
     {
         $this->validate(request(), [
-            'name'  => 'required|unique:drivers',
-            'email' => 'required|unique:drivers',
-            'phone' => 'required|unique:drivers',
+            'first_name' => 'required|unique:drivers',
+            'last_name'  => 'required',
+            'email'      => 'required|unique:drivers',
+            'phone'      => 'required|unique:drivers',
         ]);
 
         Event::dispatch('drivers.create.before');
@@ -106,9 +107,10 @@ class DriverController extends Controller
     public function update($id)
     {
         $this->validate(request(), [
-            'name'  => 'required',
-            'email' => 'required',
-            'phone' => 'required',
+            'first_name' => 'required',
+            'last_name'  => 'required',
+            'email'      => 'required',
+            'phone'      => 'required',
         ]);
 
         Event::dispatch('drivers.update.before', $id);

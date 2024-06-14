@@ -12,7 +12,8 @@ class DriverListener {
     public function leadCreateAfter($lead) 
     {
         $data = request()->only([
-            "drivers.name",
+            "drivers.first_name",
+            "drivers.last_name",
             "drivers.phone",
             "drivers.email",
             "drivers.driver_id",
@@ -32,9 +33,10 @@ class DriverListener {
        
         if(! $driver) {
             $driver = app(DriverRepository::class)->create([
-                'name'  => $data['drivers']['name'],
-                'email' => $data['drivers']['email'],
-                'phone' => $data['drivers']['phone'],
+                'first_name' => $data['drivers']['first_name'],
+                'last_name'  => $data['drivers']['last_name'],
+                'email'      => $data['drivers']['email'],
+                'phone'      => $data['drivers']['phone'],
             ]);
 
         } else {

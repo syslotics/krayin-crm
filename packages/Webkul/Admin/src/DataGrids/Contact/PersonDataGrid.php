@@ -39,7 +39,8 @@ class PersonDataGrid extends DataGrid
         $queryBuilder = DB::table('persons')
             ->addSelect(
                 'persons.id',
-                'persons.name as person_name',
+                'persons.first_name',
+                'persons.last_name',
                 'persons.emails',
                 'persons.contact_numbers',
                 'organizations.name as organization',
@@ -48,7 +49,7 @@ class PersonDataGrid extends DataGrid
             ->leftJoin('organizations', 'persons.organization_id', '=', 'organizations.id');
 
         $this->addFilter('id', 'persons.id');
-        $this->addFilter('person_name', 'persons.name');
+        $this->addFilter('person_name', 'persons.first_name');
         $this->addFilter('organization', 'organizations.id');
 
         $this->setQueryBuilder($queryBuilder);
@@ -69,8 +70,15 @@ class PersonDataGrid extends DataGrid
         ]);
 
         $this->addColumn([
-            'index'    => 'person_name',
-            'label'    => trans('admin::app.datagrid.name'),
+            'index'    => 'first_name',
+            'label'    => trans('drivers::app.datagrid.first_name'),
+            'type'     => 'string',
+            'sortable' => true,
+        ]);
+
+        $this->addColumn([
+            'index'    => 'last_name',
+            'label'    => trans('drivers::app.datagrid.last_name'),
             'type'     => 'string',
             'sortable' => true,
         ]);

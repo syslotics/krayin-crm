@@ -114,7 +114,7 @@ class PersonController extends Controller
     public function search()
     {
         $results = $this->personRepository->findWhere([
-            ['name', 'like', '%' . urldecode(request()->input('query')) . '%']
+            ['first_name', 'like', '%' . urldecode(request()->input('query')) . '%']
         ]);
 
         return response()->json($results);

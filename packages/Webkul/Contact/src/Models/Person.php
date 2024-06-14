@@ -42,7 +42,8 @@ class Person extends Model implements PersonContract
      * @var array
      */
     protected $fillable = [
-        'name',
+        'first_name',
+        'last_name',
         'emails',
         'contact_numbers',
         'organization_id',

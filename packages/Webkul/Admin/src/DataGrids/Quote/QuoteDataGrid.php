@@ -70,7 +70,7 @@ class QuoteDataGrid extends DataGrid
                 'users.id as user_id',
                 'users.name as sales_person',
                 'persons.id as person_id',
-                'persons.name as person_name',
+                'persons.first_name as person_name',
             )
             ->leftJoin('users', 'quotes.user_id', '=', 'users.id')
             ->leftJoin('persons', 'quotes.person_id', '=', 'persons.id');
@@ -88,7 +88,7 @@ class QuoteDataGrid extends DataGrid
         $this->addFilter('id', 'quotes.id');
         $this->addFilter('user', 'quotes.user_id');
         $this->addFilter('sales_person', 'quotes.user_id');
-        $this->addFilter('person_name', 'persons.name');
+        $this->addFilter('person_name', 'persons.first_name');
         $this->addFilter('created_at', 'quotes.created_at');
 
         $this->setQueryBuilder($queryBuilder);

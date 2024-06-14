@@ -10,12 +10,20 @@
             <div class="panel-body custom-attribute-view">
 
                 <div class="attribute-value-row">
-                    <div class="label">Name</div>
+                    <div class="label">{{ __('drivers::app.datagrid.first_name') }}</div>
 
                     <div class="value">
                         <a href="{{ route('admin.contacts.persons.edit', $lead->person->id) }}" target="_blank">
-                            {{ $lead->person->name }}
+                            {{ $lead->person->first_name }}
                         </a>
+                    </div>
+                </div>
+
+                <div class="attribute-value-row">
+                    <div class="label">{{ __('drivers::app.datagrid.last_name') }}</div>
+
+                    <div class="value">                        
+                        {{ $lead->person->last_name }}
                     </div>
                 </div>
 

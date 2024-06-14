@@ -17,7 +17,8 @@ class DriverDataGrid extends DataGrid
         $queryBuilder = DB::table('drivers')
             ->addSelect(
                 'drivers.id',
-                'drivers.name',
+                'drivers.first_name',
+                'drivers.last_name',
                 'drivers.email',
                 'drivers.phone'
             );
@@ -35,8 +36,15 @@ class DriverDataGrid extends DataGrid
     public function addColumns()
     {
         $this->addColumn([
-            'index'    => 'name',
-            'label'    => trans('drivers::app.datagrid.name'),
+            'index'    => 'first_name',
+            'label'    => trans('drivers::app.datagrid.first_name'),
+            'type'     => 'string',
+            'sortable' => true,
+        ]);
+
+        $this->addColumn([
+            'index'    => 'last_name',
+            'label'    => trans('drivers::app.datagrid.last_name'),
             'type'     => 'string',
             'sortable' => true,
         ]);
