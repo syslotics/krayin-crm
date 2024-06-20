@@ -65,8 +65,8 @@
                                                 return $query
                                                     ->where('entity_type', 'quotes')
                                                     ->whereIn('code', [
-                                                        'user_id',
-                                                        'name',
+                                                        //'user_id',
+                                                        //'name',
                                                         'price',
                                                         'tax',
                                                         'tip',

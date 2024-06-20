@@ -40,6 +40,7 @@
             class="form-group {{ $attribute->type }}"
             @if ($attribute->type == 'multiselect') :class="[errors.has('{{ $formScope . $attribute->code }}[]') ? 'has-error' : '']"
             @else :class="[errors.has('{{ $formScope . $attribute->code }}') ? 'has-error' : '']" @endif
+            @if ($attribute->code == 'user_id') style="display: none;" @endif
         >
 
             <label for="{{ $attribute->code }}" {{ $attribute->is_required ? 'class=required' : '' }}>

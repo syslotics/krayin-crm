@@ -94,6 +94,10 @@ class QuoteController extends Controller
 
         session()->flash('success', trans('admin::app.quotes.create-success'));
 
+        if (request('lead_id')) {
+            return redirect()->back();
+        }
+        
         return redirect()->route('admin.quotes.index');
     }
 

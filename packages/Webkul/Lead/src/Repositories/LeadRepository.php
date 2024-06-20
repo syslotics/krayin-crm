@@ -98,6 +98,7 @@ class LeadRepository extends Repository
                     'title',
                     'lead_value',
                     'persons.first_name as person_name',
+                    'persons.last_name as last_name',
                     'leads.person_id as person_id',
                     'lead_pipelines.id as lead_pipeline_id',
                     'lead_pipeline_stages.name as status',

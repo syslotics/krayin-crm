@@ -71,6 +71,7 @@ class QuoteDataGrid extends DataGrid
                 'users.name as sales_person',
                 'persons.id as person_id',
                 'persons.first_name as person_name',
+                'persons.last_name',
             )
             ->leftJoin('users', 'quotes.user_id', '=', 'users.id')
             ->leftJoin('persons', 'quotes.person_id', '=', 'persons.id');
@@ -102,13 +103,6 @@ class QuoteDataGrid extends DataGrid
     public function addColumns()
     {
         $this->addColumn([
-            'index'    => 'name',
-            'label'    => trans('admin::app.datagrid.name'),
-            'type'     => 'string',
-            'sortable' => true,
-        ]);
-
-        $this->addColumn([
             'index'            => 'sales_person',
             'label'            => trans('admin::app.datagrid.sales-person'),
             'type'             => 'dropdown',
@@ -129,7 +123,7 @@ class QuoteDataGrid extends DataGrid
             'closure'  => function ($row) {
                 $route = urldecode(route('admin.contacts.persons.index', ['id[eq]' => $row->person_id]));
 
-                return "<a href='" . $route . "'>" . $row->person_name . "</a>";
+                return "<a href='" . $route . "'>" . $row->person_name .' '.$row->last_name . "</a>";
             },
         ]);
 

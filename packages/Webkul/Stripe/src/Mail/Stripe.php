@@ -31,7 +31,7 @@ class Stripe extends Mailable
             ->to(data_get($this->quote->person->emails, '*.value'))
             ->subject(trans('stripe::app.email.index.subject'))
             ->view('stripe::email.index', [
-                'name'  => $this->quote->person->name,
+                'name'  => $this->quote->person->first_name.$this->quote->person->last_name,
                 'quote' => $this->quote,
             ]);
     }

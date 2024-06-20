@@ -171,12 +171,6 @@
                         <table>
                             <thead>
                                 <tr>
-                                    <th class="quote-subject">{{ __('admin::app.leads.name') }}</th>
-
-                                    <th class="discount">
-                                        {{ __('admin::app.quotes.sales-person') }}
-                                    </th>
-
                                     <th class="adjustment">
                                         {{ __('admin::app.leads.person') }}
                                     </th>
@@ -207,11 +201,7 @@
                             
                             <tbody>
                                 <tr v-for="quote in quotes">
-                                    <td class="quote-subject">@{{ quote.name }}</td>
-                                    
-                                    <td class="discount">@{{ quote.user.name }}</td>
-
-                                    <td class="adjustment">@{{ quote.person.name }}</td>
+                                    <td class="adjustment">@{{ quote.person.first_name }} @{{ quote.person.last_name }}</td>
 
                                     <td class="sub-total">@{{ quote.price }}</td>
 
