@@ -253,7 +253,7 @@ if (isset($lead)) {
 
                         <input type="hidden" name="lead_id" value="{{ $lead->id }}"/>
 
-                        @include ('admin::common.custom-attributes.edit.email-tags')
+                        @include ('admin::common.custom-attributes.edit.email-tags-leads')
 
                         <div class="form-group email-control-group" :class="[errors.has('email-form.reply_to[]') ? 'has-error' : '']">
                             <label for="to" class="required">{{ __('admin::app.leads.to') }}</label>
