@@ -120,6 +120,7 @@
 
         'leads' => [
             'title'                    => 'Adaylar',
+            'tip'                      => 'İpucu',
             'lead'                     => 'Lider',
             'create-title'             => 'Müşteri Adayı Oluştur',
             'edit-title'               => 'Müşteri Adayını Düzenle',

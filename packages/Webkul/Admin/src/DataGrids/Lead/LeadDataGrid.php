@@ -112,7 +112,7 @@ class LeadDataGrid extends DataGrid
                 'users.id as user_id',
                 'users.name as sales_person',
                 'persons.id as person_id',
-                'persons.name as person_name',
+                'persons.first_name as person_name',
                 'tags.name as tag_name',
                 'lead_pipelines.rotten_days as pipeline_rotten_days',
                 'lead_pipeline_stages.code as stage_code',
@@ -151,7 +151,7 @@ class LeadDataGrid extends DataGrid
         $this->addFilter('user', 'leads.user_id');
         $this->addFilter('sales_person', 'leads.user_id');
         $this->addFilter('lead_source_name', 'lead_sources.id');
-        $this->addFilter('person_name', 'persons.name');
+        $this->addFilter('person_name', 'persons.first_name');
         $this->addFilter('type', 'lead_pipeline_stages.code');
         $this->addFilter('stage', 'lead_pipeline_stages.name');
         $this->addFilter('pickup_date', 'lead_person.pickup_date');

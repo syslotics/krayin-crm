@@ -171,17 +171,12 @@
                         <table>
                             <thead>
                                 <tr>
-                                    <th class="quote-subject">{{ __('admin::app.leads.subject') }}</th>
-
-                                    <th class="expired-at">{{ __('admin::app.leads.expired-at') }}</th>
-
-                                    <th class="sub-total">
-                                        {{ __('admin::app.leads.sub-total') }}
-                                        <span class="currency-code">({{ core()->currencySymbol(config('app.currency')) }})</span>
+                                    <th class="adjustment">
+                                        {{ __('admin::app.leads.person') }}
                                     </th>
 
-                                    <th class="discount">
-                                        {{ __('admin::app.leads.discount') }}
+                                    <th class="sub-total">
+                                        {{ __('admin::app.leads.price') }}
                                         <span class="currency-code">({{ core()->currencySymbol(config('app.currency')) }})</span>
                                     </th>
 
@@ -190,8 +185,8 @@
                                         <span class="currency-code">({{ core()->currencySymbol(config('app.currency')) }})</span>
                                     </th>
 
-                                    <th class="adjustment">
-                                        {{ __('admin::app.leads.adjustment') }}
+                                    <th class="tax">
+                                        {{ __('admin::app.leads.tip') }}
                                         <span class="currency-code">({{ core()->currencySymbol(config('app.currency')) }})</span>
                                     </th>
 
@@ -206,19 +201,15 @@
                             
                             <tbody>
                                 <tr v-for="quote in quotes">
-                                    <td class="quote-subject">@{{ quote.subject }}</td>
+                                    <td class="adjustment">@{{ quote.person.first_name }} @{{ quote.person.last_name }}</td>
 
-                                    <td class="expired-at">@{{ quote.expired_at }}</td>
-                                    
-                                    <td class="sub-total">@{{ quote.sub_total }}</td>
+                                    <td class="sub-total">@{{ quote.price }}</td>
 
-                                    <td class="discount">@{{ quote.discount_amount }}</td>
+                                    <td class="tax">@{{ quote.tax }}</td>
 
-                                    <td class="tax">@{{ quote.tax_amount }}</td>
+                                    <td class="tax">@{{ quote.tip }}</td>
 
-                                    <td class="adjustment">@{{ quote.adjustment_amount }}</td>
-
-                                    <td class="grand-total">@{{ quote.grand_total }}</td>
+                                    <td class="grand-total">@{{ (quote.price + quote.tax) + quote.tip }}</td>
 
                                     <td class="actions">
                                         <span class="icon ellipsis-icon dropdown-toggle"></span>

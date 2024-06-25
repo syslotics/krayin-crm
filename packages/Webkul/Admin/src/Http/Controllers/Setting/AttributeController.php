@@ -158,8 +158,8 @@ class AttributeController extends Controller
      */
     public function lookup($lookup)
     {
-        $results = $this->attributeRepository->getLookUpOptions($lookup, request()->input('query'));
-
+        $results = $this->attributeRepository->getLookUpSearchOptions($lookup, request()->input('query'));
+        
         return response()->json($results);
     }
 

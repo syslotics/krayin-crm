@@ -143,6 +143,25 @@ class AttributeRepository extends Repository
     }
 
     /**
+     * @param  integer  $lookup
+     * @param  string  $query
+     * @param  array  $columns
+     * @return array
+     */
+    public function getLookUpSearchOptions($lookup, $query = '', $columns = [])
+    {
+        $lookup = config('attribute_lookups.' . $lookup);
+
+        if (! count($columns)) {
+            $columns = [($lookup['value_column'] ?? 'id') . ' as id' , ($lookup['label_column'] ?? 'first_name') . ' as first_name'];
+        }
+
+        return app($lookup['repository'])->findWhere([
+            [$lookup['label_column'] ?? 'first_name', 'like', '%' . urldecode($query) . '%']
+        ], $columns);
+    }
+
+    /**
      * @param  string  $lookup
      * @param  integer|array  $entityId
      * @param  array  $columns
@@ -158,6 +177,35 @@ class AttributeRepository extends Repository
 
         if (! count($columns)) {
             $columns = [($lookup['value_column'] ?? 'id') . ' as id' , ($lookup['label_column'] ?? 'name') . ' as name'];
+        }
+
+        if (is_array($entityId)) {
+            return app($lookup['repository'])->findWhereIn(
+                'id',
+                $entityId,
+                $columns
+            );
+        } else {
+            return app($lookup['repository'])->find($entityId, $columns);
+        }
+    }
+
+    /**
+     * @param  string  $lookup
+     * @param  integer|array  $entityId
+     * @param  array  $columns
+     * @return mixed
+     */
+    public function getLookUpQuoteEntity($lookup, $entityId = null, $columns = [])
+    {
+        if (! $entityId) {
+            return;
+        }
+
+        $lookup = config('attribute_lookups.' . $lookup);
+
+        if (! count($columns)) {
+            $columns = [($lookup['value_column'] ?? 'id') . ' as id' , ($lookup['label_column'] ?? 'first_name') . ' as name'];
         }
 
         if (is_array($entityId)) {

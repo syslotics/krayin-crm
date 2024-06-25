@@ -58,7 +58,8 @@ class WebFormController extends Controller
         foreach ($tempAttributes as $attribute) {
             if ($attribute->entity_type == 'persons'
                 && (
-                    $attribute->code == 'name'
+                    $attribute->code == 'first_name' 
+                    || $attribute->code == 'last_name'
                     || $attribute->code == 'emails'
                     || $attribute->code == 'contact_numbers'
                 )

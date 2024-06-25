@@ -4,6 +4,18 @@
 
 {!! view_render_event('admin.leads.view.informations.activity_actions.after', ['lead' => $lead]) !!}
 
+@php
+$quote = app('\Webkul\Quote\Repositories\QuoteRepository')->getModel();
+
+if (isset($lead)) {
+    $quote->fill([
+        'person_id'       => $lead->person_id,
+        'user_id'         => $lead->user_id,
+        'billing_address' => $lead->person->organization ? $lead->person->organization->address : null
+    ]);
+}
+@endphp
+
 @push('scripts')
 
     <script type="text/x-template" id="activity-action-component-template">
@@ -241,7 +253,7 @@
 
                         <input type="hidden" name="lead_id" value="{{ $lead->id }}"/>
 
-                        @include ('admin::common.custom-attributes.edit.email-tags')
+                        @include ('admin::common.custom-attributes.edit.email-tags-leads')
 
                         <div class="form-group email-control-group" :class="[errors.has('email-form.reply_to[]') ? 'has-error' : '']">
                             <label for="to" class="required">{{ __('admin::app.leads.to') }}</label>
@@ -401,9 +413,75 @@
 
             @if (bouncer()->hasPermission('quotes.create'))
                 <tab name="{{ __('admin::app.leads.quote') }}">
+                    
+                    <form 
+                        method="POST" 
+                        action="{{ route('admin.quotes.store') }}" 
+                        @submit.prevent="onSubmit" 
+                        enctype="multipart/form-data"
+                    >
+                        <div class="page-content">
+                            <div class="form-container">
+                                <div class="panel">
+                                    @csrf()
 
-                    <a href="{{ route('admin.quotes.create', $lead->id) }}" class="btn btn-primary">{{ __('admin::app.leads.create-quote') }}</a>
+                                    {!! view_render_event('admin.quotes.create.form_controls.information.before') !!}
+                                        <div slot="body">
+                                            @include('admin::common.custom-attributes.edit', [
+                                                'customAttributes'       => app('Webkul\Attribute\Repositories\AttributeRepository')
+                                                    ->scopeQuery(function($query) {
+                                                        return $query
+                                                            ->where('entity_type', 'quotes')
+                                                            ->whereIn('code', [
+                                                                'user_id',
+                                                                'price',
+                                                                'tax',
+                                                                'tip',
+                                                                'person_id',
+                                                            ]);
+                                                    })->get(),
+                                                'customValidations'      => [
+                                                    'expired_at' => [
+                                                    'required',
+                                                    'date_format:yyyy-MM-dd',
+                                                    'after:' .  \Carbon\Carbon::yesterday()->format('Y-m-d')
+                                                    ],
+                                                ],
+                                                'entity'                  => $quote,
+                                            ])
 
+                                            <div class="form-group">
+                                                <label for="validation">{{ __('admin::app.quotes.lead') }}</label>
+
+                                                @include('admin::common.custom-attributes.edit.lookup')
+
+                                                @php
+                                                    $lookUpEntityData = app('Webkul\Attribute\Repositories\AttributeRepository')
+                                                        ->getLookUpEntity('leads', request('id'));
+                                                @endphp
+
+                                                <lookup-component
+                                                    :attribute="{'code': 'lead_id', 'name': 'Lead', 'lookup_type': 'leads'}"
+                                                    :data='@json($lookUpEntityData)'
+                                                ></lookup-component>
+                                            </div>
+
+                                            <div class="panel-header">
+                                                {!! view_render_event('admin.quotes.create.form_buttons.before') !!}
+        
+                                                <button type="submit" class="btn btn-md btn-primary">
+                                                    {{ __('admin::app.quotes.send-btn-title') }}
+                                                </button>
+
+                                                {!! view_render_event('admin.quotes.create.form_buttons.after') !!}
+                                            </div>
+                                        </div>
+                                        
+                                    {!! view_render_event('admin.quotes.create.form_controls.information.after') !!}
+                                </div>
+                            </div>
+                        </div>
+                    </form>
                 </tab>
             @endif
 
@@ -560,5 +638,4 @@
             }
         });
     </script>
-
 @endpush

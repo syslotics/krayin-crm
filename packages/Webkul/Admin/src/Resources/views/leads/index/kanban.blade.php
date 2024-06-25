@@ -111,12 +111,12 @@
                 <div class="lead-person">
                     <i class="icon avatar-dark-icon"></i>
                         <a :href="`${personIndexUrl}?id[eq]=${lead.person_id}`">
-                            @{{ lead.person_name }}
+                            @{{ lead.person_name }} @{{ lead.last_name }}
                         </a>
                 </div>
 
                 <div class="lead-cost">
-                    <i class="icon dollar-circle-icon"></i>@{{ lead.lead_value }}
+                    <i class="icon dollar-circle-icon"></i>@{{ lead.total_cost }}
                 </div>
             </div>
         </kanban-board>

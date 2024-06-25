@@ -20,7 +20,8 @@ class LeadPersonListener {
     {
         $data = request()->only([
             'persons.id',
-            'persons.name',
+            'persons.first_name',
+            'persons.last_name',
             'persons.emails',
             'persons.contact_numbers',
             'persons.organization_id',
@@ -38,13 +39,15 @@ class LeadPersonListener {
     
         if(! $person) {
             $person = app(PersonRepository::class)->create([
-                'name'            => $data['persons']['name'],
+                'first_name'      => $data['persons']['first_name'],
+                'last_name'       => $data['persons']['last_name'],
                 'emails'          => $data['persons']['emails'],
                 'contact_numbers' => $data['persons']['contact_numbers'],
             ]);
         } else {
             $person->update([
-                'name'            => $data['persons']['name'] ?? '',
+                'first_name'      => $data['persons']['first_name'] ?? '',
+                'last_name'       => $data['persons']['last_name'] ?? '',
                 'emails'          => $data['persons']['emails'] ?? [],
                 'contact_numbers' => $data['persons']['contact_numbers'] ?? [],
             ]);

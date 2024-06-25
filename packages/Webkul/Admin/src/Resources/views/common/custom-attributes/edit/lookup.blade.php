@@ -1,7 +1,7 @@
 @if (isset($attribute))
     @php
         $lookUpEntityData = app('Webkul\Attribute\Repositories\AttributeRepository')
-            ->getLookUpEntity($attribute->lookup_type, old($attribute->code) ?: $value);
+            ->getLookUpQuoteEntity($attribute->lookup_type, old($attribute->code) ?: $value);
     @endphp
 
     <lookup-component :attribute='@json($attribute)' :validations="'{{$validations}}'" :data='@json($lookUpEntityData)'></lookup-component>
@@ -9,7 +9,6 @@
 
 @once
     @push('scripts')
-
         <script type="text/x-template" id="lookup-component-template">
             <div class="lookup-control">
                 <div class="form-group" style="margin-bottom: 0">
@@ -38,7 +37,7 @@
                     <div class="lookup-results" v-if="state == ''">
                         <ul>
                             <li v-for='(result, index) in results' @click="addLookUp(result)">
-                                <span>@{{ result.name }}</span>
+                                <span>@{{ result.first_name }}</span>
                             </li>
 
                             <li v-if='! results.length && search_term.length && ! is_searching'>
@@ -127,7 +126,7 @@
 
                         this.entity_id = result['id'];
 
-                        this.search_term = result['name'];
+                        this.search_term = result['first_name'];
 
                         eventBus.$emit('lookup-added', result);
                     },

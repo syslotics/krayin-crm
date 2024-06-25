@@ -159,7 +159,7 @@
                                 </td>
 
                                 <td>
-                                    {{ $quote->person->name }}
+                                    {{ $quote->person->first_name }} {{ $quote->person->last_name }}
                                 </td>
 
                                 <td>{!! core()->formatBasePrice(($quote->price + $quote->tax + $quote->tip), true) !!}</td>

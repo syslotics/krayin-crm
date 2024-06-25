@@ -2,19 +2,19 @@
     <script type="text/x-template" id="contact-component-template">
         <div class="contact-controls">
             
-            <div class="form-group" :class="[errors.has('{!! $formScope ?? '' !!}person[name]') ? 'has-error' : '']">
-                <label for="person[name]" class="required">{{ __('admin::app.leads.name') }}</label>
+            <div class="form-group" :class="[errors.has('{!! $formScope ?? '' !!}person[first_name]') ? 'has-error' : '']">
+                <label for="person[first_name]" class="required">{{ __('drivers::app.datagrid.first_name') }}</label>
 
                 <input
                     type="text"
-                    name="persons[name]"
+                    name="persons[first_name]"
                     class="control"
-                    id="person[name]"
-                    v-model="person.name"
+                    id="person[first_name]"
+                    v-model="person.first_name"
                     autocomplete="off"
                     placeholder="{{ __('admin::app.common.start-typing') }}"
                     v-validate="'required'"
-                    data-vv-as="&quot;{{ __('admin::app.leads.name') }}&quot;"
+                    data-vv-as="&quot;{{ __('admin::app.leads.first_name') }}&quot;"
                     v-on:keyup="search"
                 />
 
@@ -30,14 +30,14 @@
                 <div class="lookup-results" v-if="state == ''">
                     <ul>
                         <li v-for='(person, index) in persons' @click="addPerson(person)">
-                            <span>@{{ person.name }}</span>
+                            <span>@{{ person.first_name }}</span>
                         </li>
 
-                        <li v-if="! persons.length && person['name'].length && ! is_searching">
+                        <li v-if="! persons.length && person['first_name'].length && ! is_searching">
                             <span>{{ __('admin::app.common.no-result-found') }}</span>
                         </li>
 
-                        <li class="action" v-if="person['name'].length && ! is_searching" @click="addAsNew()">
+                        <li class="action" v-if="person['first_name'].length && ! is_searching" @click="addAsNew()">
                             <span>
                                 + {{ __('admin::app.common.add-as') }}
                             </span> 
@@ -45,8 +45,29 @@
                     </ul>
                 </div>
 
-                <span class="control-error" v-if="errors.has('{!! $formScope ?? '' !!}person[name]')">
-                    @{{ errors.first('{!! $formScope ?? '' !!}person[name]') }}
+                <span class="control-error" v-if="errors.has('{!! $formScope ?? '' !!}person[first_name]')">
+                    @{{ errors.first('{!! $formScope ?? '' !!}person[first_name]') }}
+                </span>
+            </div>
+
+            <!-- Last Name -->
+            <div class="form-group" :class="[errors.has('{!! $formScope ?? '' !!}driver[last_name]') ? 'has-error' : '']">
+                <label for="driver[last_name]" class="required">{{ __('drivers::app.datagrid.last_name') }}</label>
+    
+                <input
+                    type="text"
+                    name="person[last_name]"
+                    class="control"
+                    id="person[last_name]"
+                    v-model="person.last_name"
+                    autocomplete="off"
+                    placeholder="{{ __('drivers::app.datagrid.last_name') }}"
+                    v-validate="'required'"
+                    data-vv-as="&quot;{{ __('drivers::app.datagrid.last_name') }}&quot;"
+                />
+
+                <span class="control-error" v-if="errors.has('{!! $formScope ?? '' !!}person[last_name]')">
+                    @{{ errors.first('{!! $formScope ?? '' !!}person[last_name]') }}
                 </span>
             </div>
 
@@ -111,7 +132,7 @@
                     state: this.detail ? 'old': '',
 
                     person: this.detail ? this.detail : {
-                        'name': ''
+                        'first_name': ''
                     },
 
                     persons: [],
@@ -123,12 +144,12 @@
                     this.state = '';
 
                     this.person = {
-                        'name': this.person['name']
+                        'first_name': this.person['first_name']
                     };
 
                     this.is_searching = true;
 
-                    if (this.person['name'].length < 2) {
+                    if (this.person['first_name'].length < 2) {
                         this.persons = [];
 
                         this.is_searching = false;
@@ -138,7 +159,7 @@
 
                     var self = this;
                     
-                    this.$http.get("{{ route('admin.contacts.persons.search') }}", {params: {query: this.person['name']}})
+                    this.$http.get("{{ route('admin.contacts.persons.search') }}", {params: {query: this.person['first_name']}})
                         .then (function(response) {
                             self.persons = response.data;
 
