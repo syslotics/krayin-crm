@@ -1,6 +1,4 @@
 <div class="form-group time">
-    <label for="{{ $attribute->code }}">{{ $attribute->name }}</label>
-
     <time-component>
         <input 
             type="text" 
