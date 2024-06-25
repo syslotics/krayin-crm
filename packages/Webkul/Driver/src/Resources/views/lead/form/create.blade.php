@@ -8,7 +8,7 @@
         <div class="driver-controls">
             <!-- Name -->
             <div class="form-group" :class="[errors.has('{!! $formScope ?? '' !!}driver[name]') ? 'has-error' : '']">
-                <label for="driver[name]" class="required">{{ __('drivers::app.lead.form.create.name') }}</label>
+                <label for="driver[name]" class="required">{{ __('drivers::app.datagrid.first_name') }}</label>
 
                 <input
                     type="text"
