@@ -413,7 +413,6 @@ if (isset($lead)) {
 
             @if (bouncer()->hasPermission('quotes.create'))
                 <tab name="{{ __('admin::app.leads.quote') }}">
-                    
                     <form 
                         method="POST" 
                         action="{{ route('admin.quotes.store') }}" 

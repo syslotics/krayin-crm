@@ -69,5 +69,5 @@ class StripeListener {
         if(Storage::has($quote->invoice_path)) {
             Storage::delete($quote->invoice_path);
         }
-    } 
+    }
 }

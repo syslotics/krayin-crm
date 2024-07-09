@@ -52,13 +52,13 @@
 
             <!-- Last Name -->
             <div class="form-group" :class="[errors.has('{!! $formScope ?? '' !!}driver[last_name]') ? 'has-error' : '']">
-                <label for="driver[last_name]" class="required">{{ __('drivers::app.datagrid.last_name') }}</label>
-    
+                <label for="persons[last_name]" class="required">{{ __('drivers::app.datagrid.last_name') }}</label>
+
                 <input
                     type="text"
-                    name="person[last_name]"
+                    name="persons[last_name]"
                     class="control"
-                    id="person[last_name]"
+                    id="persons[last_name]"
                     v-model="person.last_name"
                     autocomplete="off"
                     placeholder="{{ __('drivers::app.datagrid.last_name') }}"
