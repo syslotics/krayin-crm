@@ -22,7 +22,7 @@ class DriverDataGrid extends DataGrid
                 'drivers.email',
                 'drivers.phone'
             );
-
+        
         $this->addFilter('id', 'drivers.id');
 
         $this->setQueryBuilder($queryBuilder);

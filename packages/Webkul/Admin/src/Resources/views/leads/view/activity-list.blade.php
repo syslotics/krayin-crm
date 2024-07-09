@@ -209,7 +209,7 @@
 
                                     <td class="tax">@{{ quote.tip }}</td>
 
-                                    <td class="grand-total">@{{ (quote.price + quote.tax) + quote.tip }}</td>
+                                    <td class="grand-total">@{{ parseFloat(quote.price) + parseFloat(quote.tax) + parseFloat(quote.tip) }}</td>
 
                                     <td class="actions">
                                         <span class="icon ellipsis-icon dropdown-toggle"></span>

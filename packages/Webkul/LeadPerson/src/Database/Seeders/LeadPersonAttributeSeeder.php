@@ -7,7 +7,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
 /**
- * Path= php artisan db:seed --class="Webkul\\LeadPerson\\Database\\Seeders\\LeadPersonAttributeSeeder
+ * Path= php artisan db:seed --class="Webkul\\LeadPerson\\Database\\Seeders\\LeadPersonAttributeSeeder"
  */
 class LeadPersonAttributeSeeder extends Seeder
 {
@@ -25,7 +25,7 @@ class LeadPersonAttributeSeeder extends Seeder
                 'validation'      => NULL,
                 'sort_order'      => NULL,
                 'is_required'     => '1',
-                'is_unique'       => NULL,
+                'is_unique'       => '0',
                 'quick_add'       => '1',
                 'is_user_defined' => '1',
                 'created_at'      => $now,
@@ -39,7 +39,7 @@ class LeadPersonAttributeSeeder extends Seeder
                 'validation'      => NULL,
                 'sort_order'      => NULL,
                 'is_required'     => '1',
-                'is_unique'       => NULL,
+                'is_unique'       => '0',
                 'quick_add'       => '1',
                 'is_user_defined' => '1',
                 'created_at'      => $now,
@@ -53,7 +53,7 @@ class LeadPersonAttributeSeeder extends Seeder
                 'validation'      => NULL,
                 'sort_order'      => NULL,
                 'is_required'     => '1',
-                'is_unique'       => NULL,
+                'is_unique'       => '0',
                 'quick_add'       => '1',
                 'is_user_defined' => '1',
                 'created_at'      => $now,
@@ -67,7 +67,7 @@ class LeadPersonAttributeSeeder extends Seeder
                 'validation'      => NULL,
                 'sort_order'      => NULL,
                 'is_required'     => '1',
-                'is_unique'       => NULL,
+                'is_unique'       => '0',
                 'quick_add'       => '1',
                 'is_user_defined' => '1',
                 'created_at'      => $now,
@@ -81,7 +81,7 @@ class LeadPersonAttributeSeeder extends Seeder
                 'validation'      => NULL,
                 'sort_order'      => NULL,
                 'is_required'     => '1',
-                'is_unique'       => NULL,
+                'is_unique'       => '0',
                 'quick_add'       => '1',
                 'is_user_defined' => '1',
                 'created_at'      => $now,
@@ -95,7 +95,7 @@ class LeadPersonAttributeSeeder extends Seeder
                 'validation'      => NULL,
                 'sort_order'      => NULL,
                 'is_required'     => '1',
-                'is_unique'       => NULL,
+                'is_unique'       => '0',
                 'quick_add'       => '1',
                 'is_user_defined' => '1',
                 'created_at'      => $now,
@@ -109,7 +109,7 @@ class LeadPersonAttributeSeeder extends Seeder
                 'validation'      => NULL,
                 'sort_order'      => NULL,
                 'is_required'     => '1',
-                'is_unique'       => NULL,
+                'is_unique'       => '0',
                 'quick_add'       => '1',
                 'is_user_defined' => '1',
                 'created_at'      => $now,
@@ -123,15 +123,147 @@ class LeadPersonAttributeSeeder extends Seeder
                 'validation'      => NULL,
                 'sort_order'      => NULL,
                 'is_required'     => '1',
-                'is_unique'       => NULL,
+                'is_unique'       => '0',
                 'quick_add'       => '1',
                 'is_user_defined' => '1',
                 'created_at'      => $now,
                 'updated_at'      => $now,
-            ],
+
+            ], [
+                'code'            => 'tax',
+                'name'            => 'Tax',
+                'type'            => 'price',
+                'entity_type'     => 'leads',
+                'lookup_type'     => 'leads',
+                'validation'      => NULL,
+                'sort_order'      => NULL,
+                'is_required'     => '1',
+                'is_unique'       => '0',
+                'quick_add'       => '1',
+                'is_user_defined' => '1',
+                'created_at'      => $now,
+                'updated_at'      => $now,
+            ], [
+                'code'            => 'gratuity',
+                'name'            => 'Gratuity',
+                'type'            => 'price',
+                'entity_type'     => 'leads',
+                'lookup_type'     => 'leads',
+                'validation'      => NULL,
+                'sort_order'      => NULL,
+                'is_required'     => '1',
+                'is_unique'       => '0',
+                'quick_add'       => '1',
+                'is_user_defined' => '1',
+                'created_at'      => $now,
+                'updated_at'      => $now,
+            ], [
+                'code'            => 'extra_addons',
+                'name'            => 'Extra Addons',
+                'type'            => 'price',
+                'entity_type'     => 'leads',
+                'lookup_type'     => 'leads',
+                'validation'      => NULL,
+                'sort_order'      => NULL,
+                'is_required'     => '1',
+                'is_unique'       => '0',
+                'quick_add'       => '1',
+                'is_user_defined' => '1',
+                'created_at'      => $now,
+                'updated_at'      => $now,
+            ], [
+                'code'            => 'total_cost',
+                'name'            => 'Total Cost',
+                'type'            => 'price',
+                'entity_type'     => 'leads',
+                'lookup_type'     => 'leads',
+                'validation'      => NULL,
+                'sort_order'      => NULL,
+                'is_required'     => '1',
+                'is_unique'       => '0',
+                'quick_add'       => '1',
+                'is_user_defined' => '1',
+                'created_at'      => $now,
+                'updated_at'      => $now,
+            ], [
+                'code'            => 'source_of_lead',
+                'name'            => 'Source of Lead',
+                'type'            => 'price',
+                'entity_type'     => 'leads',
+                'lookup_type'     => 'leads',
+                'validation'      => NULL,
+                'sort_order'      => NULL,
+                'is_required'     => '1',
+                'is_unique'       => '0',
+                'quick_add'       => '1',
+                'is_user_defined' => '1',
+                'created_at'      => $now,
+                'updated_at'      => $now,
+            ], [
+                'code'            => 'cost',
+                'name'            => 'Cost',
+                'type'            => 'price',
+                'entity_type'     => 'leads',
+                'lookup_type'     => 'leads',
+                'validation'      => NULL,
+                'sort_order'      => NULL,
+                'is_required'     => '1',
+                'is_unique'       => '0',
+                'quick_add'       => '1',
+                'is_user_defined' => '1',
+                'created_at'      => $now,
+                'updated_at'      => $now,
+            ], [
+                'code'            => 'first_name',
+                'name'            => 'First Name',
+                'type'            => 'text',
+                'entity_type'     => 'persons',
+                'lookup_type'     => NULL,
+                'validation'      => NULL,
+                'sort_order'      => NULL,
+                'is_required'     => '0',
+                'is_unique'       => '1',
+                'quick_add'       => '1',
+                'is_user_defined' => '0',
+                'created_at'      => $now,
+                'updated_at'      => $now,
+            ], [
+                'code'            => 'last_name',
+                'name'            => 'Last Name',
+                'type'            => 'text',
+                'entity_type'     => 'persons',
+                'lookup_type'     => NULL,
+                'validation'      => NULL,
+                'sort_order'      => NULL,
+                'is_required'     => '0',
+                'is_unique'       => '1',
+                'quick_add'       => '1',
+                'is_user_defined' => '0',
+                'created_at'      => $now,
+                'updated_at'      => $now,
+            ], [
+                'code'            => 'price',
+                'name'            => 'Price',
+                'type'            => 'price',
+                'entity_type'     => 'quotes',
+                'lookup_type'     => 'leads',
+                'validation'      => NULL,
+                'sort_order'      => '4',
+                'is_required'     => '0',
+                'is_unique'       => '0',
+                'quick_add'       => '1',
+                'is_user_defined' => '0',
+                'created_at'      => $now,
+                'updated_at'      => $now,
+            ], 
         ];
 
-        DB::table('attributes')->insert($attributes);
+        foreach ($attributes as $attribute) {
+            DB::table('attributes')->updateOrInsert([
+                'code'        => $attribute['code'],
+                'entity_type' => $attribute['entity_type'],
+            ], $attribute);
+        }
 
         $serviceTypeId = DB::table('attributes')->where('code', 'service_type')->first()->id;
 
@@ -180,5 +312,10 @@ class LeadPersonAttributeSeeder extends Seeder
         ];
 
         DB::table('attribute_options')->insert($options);
+
+        DB::table('attributes')->where([
+            'entity_type'     => 'leads',
+            'code'            => 'title',
+        ])->delete();
     }
 }
